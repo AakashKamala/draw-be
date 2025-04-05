@@ -12,7 +12,10 @@ mongoose.connect(process.env.MONGO_URI as string)
   .catch((err: any) => console.error("MongoDB connection error:", err));
 
 
-const SOCKET_PORT=process.env.SOCKET_PORT as unknown as number
+// const SOCKET_PORT=process.env.SOCKET_PORT as unknown as number
+
+const SOCKET_PORT = parseInt(process.env.PORT || "8005"); // fallback for local
+
 
 const wss = new WebSocketServer({ port: SOCKET_PORT });
 
